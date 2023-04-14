@@ -1,0 +1,131 @@
+[
+  [
+    "listEntries",
+    {
+      "1877f2ac989-2euknys9v5590a": {
+        "createdOn": "2023-04-14T09:48:43.273Z",
+        "userId": "0",
+        "category": "category",
+        "desc": "desc",
+        "title": "title",
+        "_id": "1877f2ac989-2euknys9v5590a"
+      },
+      "1877f2b40e0-gt9cgvwz1iwylf": {
+        "createdOn": "2023-04-14T09:49:13.824Z",
+        "userId": "0",
+        "category": "category",
+        "desc": "desc",
+        "title": "title",
+        "_id": "1877f2b40e0-gt9cgvwz1iwylf"
+      },
+      "1877f2b40e7-bu8023qownbcdi": {
+        "createdOn": "2023-04-14T09:49:13.830Z",
+        "userId": "0",
+        "category": "category",
+        "desc": "desc",
+        "title": "title",
+        "_id": "1877f2b40e7-bu8023qownbcdi"
+      },
+      "1878081a27f-971n3h6f9ktu6v": {
+        "createdOn": "2023-04-14T16:03:12.127Z",
+        "userId": "0",
+        "category": "category",
+        "desc": "desc",
+        "title": "title",
+        "_id": "1878081a27f-971n3h6f9ktu6v"
+      },
+      "1878081a281-gd72lfkcfq4dyg": {
+        "createdOn": "2023-04-14T16:03:12.128Z",
+        "userId": "0",
+        "category": "category",
+        "desc": "desc",
+        "title": "title",
+        "_id": "1878081a281-gd72lfkcfq4dyg"
+      },
+      "1878081a2a0-h2cn3g45xohy00": {
+        "createdOn": "2023-04-14T16:03:12.160Z",
+        "userId": "0",
+        "category": "category",
+        "desc": "desc",
+        "title": "title",
+        "_id": "1878081a2a0-h2cn3g45xohy00"
+      },
+      "1878081a2c0-7ln5sq3du1s3ma": {
+        "createdOn": "2023-04-14T16:03:12.192Z",
+        "userId": "0",
+        "category": "category",
+        "desc": "desc",
+        "title": "title",
+        "_id": "1878081a2c0-7ln5sq3du1s3ma"
+      },
+      "1878108218d-z58efsntbr0pm9": {
+        "createdOn": "2023-04-14T18:30:06.477Z",
+        "userId": "0",
+        "category": "category",
+        "desc": "desc",
+        "title": "title",
+        "_id": "1878108218d-z58efsntbr0pm9"
+      },
+      "18781082190-md7vek7p2wli34": {
+        "createdOn": "2023-04-14T18:30:06.480Z",
+        "userId": "0",
+        "category": "category",
+        "desc": "desc",
+        "title": "title",
+        "_id": "18781082190-md7vek7p2wli34"
+      },
+      "1878108d4fc-oyy8byvhsxw5pv": {
+        "createdOn": "2023-04-14T18:30:52.412Z",
+        "userId": "0",
+        "category": "category",
+        "desc": "desc",
+        "title": "title",
+        "_id": "1878108d4fc-oyy8byvhsxw5pv"
+      },
+      "1878108d4ff-ytulu0merm0upp": {
+        "createdOn": "2023-04-14T18:30:52.414Z",
+        "userId": "0",
+        "category": "category",
+        "desc": "desc",
+        "title": "title",
+        "_id": "1878108d4ff-ytulu0merm0upp"
+      },
+      "1878165d3ba-2rtb8musbxfc0t": {
+        "createdOn": "2023-04-14T20:12:26.938Z",
+        "userId": "0",
+        "category": "category",
+        "desc": "desc",
+        "title": "title",
+        "_id": "1878165d3ba-2rtb8musbxfc0t"
+      },
+      "1878165d3be-sk8bbe2sunips3": {
+        "createdOn": "2023-04-14T20:12:26.942Z",
+        "userId": "0",
+        "category": "category",
+        "desc": "desc",
+        "title": "title",
+        "_id": "1878165d3be-sk8bbe2sunips3"
+      },
+      "187816a968f-8kg52fzvepyt26": {
+        "createdOn": "2023-04-14T20:17:38.959Z",
+        "userId": "0",
+        "category": "category",
+        "desc": "desc",
+        "title": "title",
+        "_id": "187816a968f-8kg52fzvepyt26"
+      },
+      "187816a9695-lef29qbrgd9ap4": {
+        "createdOn": "2023-04-14T20:17:38.964Z",
+        "userId": "0",
+        "category": "category",
+        "desc": "desc",
+        "title": "title",
+        "_id": "187816a9695-lef29qbrgd9ap4"
+      }
+    }
+  ],
+  [
+    "_dbmetadata",
+    {}
+  ]
+]
