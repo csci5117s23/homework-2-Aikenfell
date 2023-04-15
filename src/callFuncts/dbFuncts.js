@@ -1,5 +1,5 @@
 const backend_base = process.env.NEXT_PUBLIC_BACKEND_BASE_URL;
-
+const authToken = process.env.NEXT_PUBLIC_BACKEND_API_KEY;
 
 // export async function getListEntries(authToken) {
 export async function getListEntries() {
@@ -7,7 +7,10 @@ export async function getListEntries() {
   // console.log(backend_base);
   const result = await fetch(backend_base + "/listEntries", {
     'method': 'GET',
-    // 'headers': {'Authorization': 'Bearer ' + authToken}
+    'headers': {
+      'x-apikey':  authToken,
+      'Content-Type': 'application/json'
+    },
   })
   // console.log("getListEntries result");
   return await result.json();
@@ -24,7 +27,7 @@ export async function addListEntry(desc, category, userId) {
   const result = await fetch(backend_base + "/listEntries", {
     'method': 'POST',
     'headers': {
-      // 'Authorization': 'Bearer ' + authToken,
+      'x-apikey':  authToken,
       'Content-Type': 'application/json'
     },
     'body': JSON.stringify({
@@ -46,7 +49,7 @@ export async function setListItemDone(id, status) {
   const result = await fetch(backend_base + "/listEntries/" + id, {
     'method': 'PATCH',
     'headers': {
-      // 'Authorization': 'Bearer ' + authToken,
+      'x-apikey':  authToken,
       'Content-Type': 'application/json'
     },
     'body': JSON.stringify({
@@ -65,7 +68,7 @@ export async function editListEntryDesc(id, desc) {
   const result = await fetch(backend_base + "/listEntries/" + id, {
     'method': 'PATCH',
     'headers': {
-      // 'Authorization': 'Bearer ' + authToken,
+      'x-apikey':  authToken,
       'Content-Type': 'application/json'
     },
     'body': JSON.stringify({
@@ -85,7 +88,10 @@ export async function getListEntriesByUserId(userId, completed) {
   // console.log(url);
   const result = await fetch(url, {
     'method': 'GET',
-    // 'headers': {'Authorization': 'Bearer ' + authToken}
+    'headers': {
+      'x-apikey':  authToken,
+      'Content-Type': 'application/json'
+    },
   })
   const res = await result.json();
   return res.sort((a, b) => 
@@ -97,7 +103,10 @@ export async function getListEntriesByCategory(category) {
     category
   }), {
     'method': 'GET',
-    // 'headers': {'Authorization': 'Bearer ' + authToken}
+    'headers': {
+      'x-apikey':  authToken,
+      'Content-Type': 'application/json'
+    },
   })
 
   return await result.json();
@@ -111,7 +120,10 @@ export async function getListEntryById(id) {
 
   const result = await fetch(url, {
     'method': 'GET',
-    // 'headers': {'Authorization': 'Bearer ' + authToken}
+    'headers': {
+      'x-apikey':  authToken,
+      'Content-Type': 'application/json'
+    },
   })
   return await result.json();
 }
@@ -123,7 +135,10 @@ export async function getCategoryListByUserId(userId) {
   // console.log(url);
   const result = await fetch(url, {
     'method': 'GET',
-    // 'headers': {'Authorization': 'Bearer ' + authToken}
+    'headers': {
+      'x-apikey':  authToken,
+      'Content-Type': 'application/json'
+    },
   })  
   return await result.json();
 }
@@ -144,7 +159,7 @@ export async function addCategoryEntry(category, userId) {
     const result = await fetch(url, {
       'method': 'POST',
       'headers': {
-        // 'Authorization': 'Bearer ' + authToken,
+        'x-apikey':  authToken,
         'Content-Type': 'application/json'
       },
       'body': JSON.stringify({
@@ -165,7 +180,7 @@ export async function addCategoryEntry(category, userId) {
     const result = await fetch(url, {
       'method': 'PATCH',
       'headers': {
-        // 'Authorization': 'Bearer ' + authToken,
+        'x-apikey':  authToken,
         'Content-Type': 'application/json'
       },
       'body': JSON.stringify({
