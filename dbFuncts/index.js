@@ -36,7 +36,7 @@ app.get('/', (req, res) => {
 //   res.json({ "message": "Hello React world!", "visits": visits });
 // });
 
-crudlify(app, {listEntries: listEntry})
+crudlify(app, {listEntries: listEntry, userCategories: userData}  )
 
 
 // bind to serverless runtime

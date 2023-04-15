@@ -1,25 +1,5 @@
 const backend_base = process.env.NEXT_PUBLIC_BACKEND_BASE_URL;
 
-export async function getGroups(authToken) {
-  const result = await fetch(backend_base + "/groups", {
-    'method': 'GET',
-    'headers': {
-      'Authorization': 'Bearer ' + authToken
-    }
-  })
-  return await result.json();
-}
-
-
-export async function deleteGroup(authToken, group) {
-  const result = await fetch(backend_base + "/groups/" + group._id, {
-    'method': 'DELETE',
-    'headers': {
-      'Authorization': 'Bearer ' + authToken
-    },
-  })
-  return await result.json();
-}
 
 // export async function getListEntries(authToken) {
 export async function getListEntries() {
@@ -29,17 +9,17 @@ export async function getListEntries() {
     'method': 'GET',
     // 'headers': {'Authorization': 'Bearer ' + authToken}
   })
-  console.log("getListEntries result");
+  // console.log("getListEntries result");
   return await result.json();
 }
 
 export async function addListEntry(desc, category, userId) {
-  console.log("addListEntry");
-  console.log(JSON.stringify({
-    desc,
-    category,
-    userId,
-  }));
+  // console.log("addListEntry");
+  // console.log(JSON.stringify({
+  //   desc,
+  //   category,
+  //   userId,
+  // }));
 
   const result = await fetch(backend_base + "/listEntries", {
     'method': 'POST',
@@ -56,13 +36,13 @@ export async function addListEntry(desc, category, userId) {
   return await result.json();
 }
 
-export async function setListItemDone(id,status) {
-  console.log("setListItemDone");
-  console.log(JSON.stringify({
-    "completed": status
-  }));
+export async function setListItemDone(id, status) {
+  // console.log("setListItemDone");
+  // console.log(JSON.stringify({
+  //   "completed": status
+  // }));
   const url = backend_base + "/listEntries/" + id;
-  console.log(url);
+  // console.log(url);
   const result = await fetch(backend_base + "/listEntries/" + id, {
     'method': 'PATCH',
     'headers': {
@@ -75,13 +55,13 @@ export async function setListItemDone(id,status) {
   })
   return await result.json();
 }
-export async function editListEntryDesc(id,desc) {
-  console.log("setListItemDone");
-  console.log(JSON.stringify({
-    desc
-  }));
+export async function editListEntryDesc(id, desc) {
+  // console.log("setListItemDone");
+  // console.log(JSON.stringify({
+  //   desc
+  // }));
   const url = backend_base + "/listEntries/" + id;
-  console.log(url);
+  // console.log(url);
   const result = await fetch(backend_base + "/listEntries/" + id, {
     'method': 'PATCH',
     'headers': {
@@ -95,8 +75,12 @@ export async function editListEntryDesc(id,desc) {
   return await result.json();
 }
 
-export async function getListEntriesByUserId(userId,completed) {
-  const url = backend_base + "/listEntries?" + new URLSearchParams({ userId}) + "&" + new URLSearchParams({completed});
+export async function getListEntriesByUserId(userId, completed) {
+  const url = backend_base + "/listEntries?" + new URLSearchParams({
+    userId
+  }) + "&" + new URLSearchParams({
+    completed
+  });
   // console.log("getListEntriesByUserId");
   // console.log(url);
   const result = await fetch(url, {
@@ -118,8 +102,10 @@ export async function getListEntriesByCategory(category) {
 }
 
 export async function getListEntryById(id) {
-  const url = backend_base + "/listEntries?" + new URLSearchParams({"_id" :id});
-  console.log(url);
+  const url = backend_base + "/listEntries?" + new URLSearchParams({
+    "_id": id
+  });
+  // console.log(url);
 
   const result = await fetch(url, {
     'method': 'GET',
@@ -128,63 +114,62 @@ export async function getListEntryById(id) {
   return await result.json();
 }
 
-// export async function deleteListEntry(authToken, listEntry) {
-//     const result = await fetch(backend_base+"/listEntries/"+listEntry._id,{
-//         'method':'DELETE',
-//         'headers': {'Authorization': 'Bearer ' + authToken},
-//     })
-//     return await result.json();
-// }
-
-
-export async function getReview(authToken, group) {
-
-  const result = await fetch(backend_base + "/pres?" + new URLSearchParams({
-    group
-  }), {
+export async function getCategoryListByUserId(userId) {
+  const url = backend_base + "/userCategories?" + new URLSearchParams({
+    userId
+  });
+  // console.log(url);
+  const result = await fetch(url, {
     'method': 'GET',
-    'headers': {
-      'Authorization': 'Bearer ' + authToken
-    }
-  })
-  if (result.ok) {
-    const reviews = await result.json();
-    if (reviews.length > 0) {
-      return reviews[0]
-    } else {
-      return null
-    }
-  } else {
-    return null;
-  }
+    // 'headers': {'Authorization': 'Bearer ' + authToken}
+  })  
+  return await result.json();
 }
 
-export async function postReview(authToken, group, notes, score) {
-  const result = await fetch(backend_base + "/pres", {
-    'method': 'POST',
-    'headers': {
-      'Authorization': 'Bearer ' + authToken,
-      'Content-Type': 'application/json'
-    },
-    'body': JSON.stringify({
-      group,
-      notes,
-      score
+export async function addCategoryEntry(category, userId) {
+  // console.log("addCategoryEntry");
+  const DataRet = {}
+  // console.log(category);
+  // console.log(DataRet);
+  // console.log(DataRet["categories"] === undefined);
+  if (DataRet["categories"] === undefined) {
+    // console.log("addCategoryEntry");
+    // console.log(JSON.stringify({
+    //   "categories": ["None"].concat(category),
+    //   userId,
+    // }));
+    const url = backend_base + "/userCategories";
+    const result = await fetch(url, {
+      'method': 'POST',
+      'headers': {
+        // 'Authorization': 'Bearer ' + authToken,
+        'Content-Type': 'application/json'
+      },
+      'body': JSON.stringify({
+        "categories": ["None"].concat(category),
+        userId,
+      })
     })
-  });
-  return await result.json();
-}
-
-
-
-export async function updateReview(authToken, review) {
-  const result = await fetch(backend_base + "/pres/" + review._id, {
-    'method': 'PUT',
-    'headers': {
-      'Authorization': 'Bearer ' + authToken,
-      'Content-Type': 'application/json'
-    },
-    'body': JSON.stringify(review)
-  });
-  return await result.json();
+    return await result.json();
+  } else {
+    // console.log("addCategoryEntry");
+    // console.log(JSON.stringify({
+    //   category,
+    //   userId,
+    // }));
+    const url = backend_base + "/userData?" + new URLSearchParams({
+      userId
+    });
+    const result = await fetch(url, {
+      'method': 'PATCH',
+      'headers': {
+        // 'Authorization': 'Bearer ' + authToken,
+        'Content-Type': 'application/json'
+      },
+      'body': JSON.stringify({
+        category,
+      })
+    })
+    return await result.json();
+  }
 }

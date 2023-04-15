@@ -16,14 +16,14 @@ const handleSubmit = (event) => {
 function TodoList() {
   const { isLoaded, userId, sessionId, getToken } = useAuth();
   const userEntries = [];
-  // console.log(userEntries);
+  console.log(userEntries);
   async function updateUserEntries() {
     const userEntries = await getListEntriesByUserId(userId, true);
-    // console.log(userEntries);
+    console.log(userEntries);
   }
   React.useEffect(() => {
     updateUserEntries();
-    // console.log("User Entries Updated");
+    console.log("User Entries Updated");
 
     getListEntriesByUserId(userId, true)
       .then(d => {
@@ -39,9 +39,9 @@ function TodoList() {
       .then(d => {
         setListContents(d)
       })
-    // console.log(listContents);
+    console.log(listContents);
     updateUserEntries();
-    // console.log(listContents);
+    console.log(listContents);
   }
 
   return (

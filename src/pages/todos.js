@@ -2,9 +2,10 @@ import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import Link from 'next/link'
 import React from 'react';
-import { TodoEntry } from '@/components/TodoForm';
 import { getListEntriesByUserId, setListItemDone } from '@/callFuncts/dbFuncts';
 import { useAuth } from '@clerk/nextjs';
+import { TodoEntry } from '@/components/TodoForm';
+import { CategoryEntry } from '@/components/CategoryForm';
 const inter = Inter({ subsets: ['latin'] })
 
 const handleSubmit = (event) => {
@@ -16,7 +17,6 @@ const handleSubmit = (event) => {
 function TodoList() {
   const { isLoaded, userId, sessionId, getToken } = useAuth();
   const userEntries = [];
-  console.log(userEntries);
   async function updateUserEntries() {
     getListEntriesByUserId(userId, false)
       .then(d => {
@@ -27,29 +27,28 @@ function TodoList() {
 
   React.useEffect(() => {
     updateUserEntries();
-    console.log("User Entries Updated");
+    // console.log("User Entries Updated");
   }, []);
   const [listContents, setListContents] = React.useState(userEntries);
 
   const markDone = (target) => {
     
-    console.log(target+" Marking Done");
+    // console.log(target+" Marking Done");
     setListItemDone(target,true)      .then(d => {
-      console.log(target+" Is Done");
+      // console.log(target+" Is Done");
       updateUserEntries();
     })
         updateUserEntries();
-    console.log(listContents);
   }
 
-  const updateList = (textInput) => {
+  const updateList = () => {
     updateUserEntries();
-    console.log(listContents);
+    // console.log(listContents);
   }
 
 
   return (
-    <main className="h-screen pt-4 w-full flex flex-col items-center bg-white">
+    <main className="h-screen pt-4 w-full flex flex-col items-center bg-slate-800">
 
 
       <div className="w-full h-auto bg-stone-900 border-4 border-slate-900">
@@ -57,7 +56,16 @@ function TodoList() {
         <h2 className="text-white font-normal text-2xl pl-16 py-8"><Link href="done">Access Done List</Link></h2>
         
         <div className='ml-16'>
-          <TodoEntry listElements={listContents} userToken={userId} todoElementsUpdate={updateList} category={'None'} />
+          <div>
+        <TodoEntry listElements={listContents} userToken={userId} todoElementsUpdate={updateList} category={'None'} />
+        <CategoryEntry listElements={listContents} userToken={userId} todoElementsUpdate={updateList} category={'None'} />
+
+          </div>
+          <div className='w-full'>
+          <div className='w-1/5'>
+          </div>
+
+          <div className='w-4/5'>
           {listContents.map(entry => (
             <div key={entry["_id"]} className="w-full h-auto divide-y-4 bg-slate-500 border-4 border-slate-900">
               <div className=" flex flex-col md:flex-row justify-center items-center">
@@ -76,7 +84,9 @@ function TodoList() {
               </div>
             </div>
           ))}
+</div>
 
+</div>
         </div>
       </div>
 

@@ -10,7 +10,6 @@ import Router from 'next/router'
 
 
 const inter = Inter({ subsets: ['latin'] })
-const backend_base = process.env.NEXT_PUBLIC_BACKEND_BASE_URL;
 
 
 function app() {

@@ -31,11 +31,11 @@ function entry(entry) {
 
     const markDone = (target, listStatus) => {
 
-        console.log(target + " Marking Done");
+        // console.log(target + " Marking Done");
         setListItemDone(target, !status).then(d => {
-            console.log(!status)
+            // console.log(!status)
             setStatus(!status);
-            console.log(target + " Is Done");
+            // console.log(target + " Is Done");
         })
     }
 
@@ -53,22 +53,22 @@ function entry(entry) {
 
     React.useEffect(() => {
         getListEntryById(lid).then(d => {
-            console.log(d)
-            console.log(d == [])
+            // console.log(d)
+            // console.log(d == [])
             if (d[0] === undefined) {
-                console.log("Redirecting")
+                // console.log("Redirecting")
                 Router.push('/404');
             }
             else {
             setEntryData(d[0])
             form.desc = d[0]["desc"]
             setStatus(d[0]["completed"])
-            console.log(d[0]["completed"])
-            console.log(status)
+            // console.log(d[0]["completed"])
+            // console.log(status)
             }
         })
-        console.log("User Entries Updated");
-        console.log(entryData);
+        // console.log("User Entries Updated");
+        // console.log(entryData);
     }, []);
 
     return (
