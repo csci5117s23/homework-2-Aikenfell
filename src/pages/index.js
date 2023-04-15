@@ -4,29 +4,32 @@ import Link from 'next/link'
 import { useRouter } from "next/router";
 import { useAuth } from '@clerk/nextjs';
 // import { useAuth } from "@clerk/nextjs";
+import React from 'react';
+import { SignIn,SignInButton } from "@clerk/clerk-react";
+import Router from 'next/router'
+
 
 const inter = Inter({ subsets: ['latin'] })
+const backend_base = process.env.NEXT_PUBLIC_BACKEND_BASE_URL;
 
 
 function app() {
-  const { isLoaded, userId, sessionId, getToken } = useAuth();
-  useEffect(() => {
-    async function process() {
-      if (userId) { // check if 1) logged in, and 2) auth is loaded properly in the first place
-        const token = await getToken({ template: "codehooks" }); // get the token
 
-        const result = await fetch(backend_base+"/groups",{
-        'method':'GET',
-        'headers': {'Authorization': 'Bearer ' + authToken} // use the token.
-        })
-        // ... use the request...    
-      }
-    }
-    process();
-  }, [isLoaded]);
+  const { isLoaded, userId, sessionId ,getToken} = useAuth();
+
+  if(userId) {
+    Router.push('/todos')
+  }
+  else {
+
+    console.log("no userId");
+    console.log(userId);
+  }
 
 
   return (
+
+
     <main className="h-screen pt-4 w-full flex flex-col items-center bg-white">
 
 
@@ -35,10 +38,10 @@ function app() {
     <h2 className="text-white font-normal text-2xl pl-16 pt-8"><Link href="todos">Access To Do List</Link></h2>
     <h2 className="text-white font-normal text-2xl pl-16 pt-8"><Link href="testy">Testy Test Test Test</Link></h2>
     <h3 className="text-white font-normal text-lg pl-16 pt-4">View Completed Items</h3>
+
+    <div className='ml-16'>    <SignIn />
+</div>
   </div>
-
-
-
 
 
     </main>

@@ -5,14 +5,20 @@
 */
 import {app, Datastore} from 'codehooks-js'
 import {crudlify} from 'codehooks-crudlify'
-import { date, object, string, number} from 'yup';
+import { date, object, string, number, array ,boolean} from 'yup';
 // test route for https://<PROJECTID>.api.codehooks.io/dev/
 const listEntry = object({
-  title: string().required(),
   desc: string().required(),
   category:  string().required(),
   userId: string().required(),
+  completed: boolean().default(false),
   createdOn: date().default(() => new Date()),
+})
+
+const userData = object({
+  userId: string().required(),
+  // array of strings
+  categories: array().of(string()).required(),
 })
 
 

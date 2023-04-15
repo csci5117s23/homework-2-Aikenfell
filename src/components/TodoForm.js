@@ -1,6 +1,7 @@
 // https://www.robinwieruch.de/react-form/
 import * as React from 'react';
-const LoginForm = ({listElements,todoElementsUpdate}) => {
+import { addListEntry } from '@/callFuncts/dbFuncts';
+const TodoEntry = ({ listElements, userToken, todoElementsUpdate, category }) => {
     const handleChange = (event) => {
         setForm({
             [event.target.id]: event.target.value,
@@ -12,14 +13,17 @@ const LoginForm = ({listElements,todoElementsUpdate}) => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        todoElementsUpdate(form.desc);
-        // console.log(listElements);
-        alert(form.desc);
+        if (form.desc != '') {
+            addListEntry(form.desc, category, userToken);
+            todoElementsUpdate(form.desc);
+            // console.log(listElements);
+            form.desc = '';
+        }
     };
 
     return (
         <form onSubmit={handleSubmit}>
-            <div>
+            <div className='flex flex-col'>
                 <label htmlFor="desc">Task Description</label>
                 <input
                     className='text-black'
@@ -28,9 +32,9 @@ const LoginForm = ({listElements,todoElementsUpdate}) => {
                     value={form.desc}
                     onChange={handleChange} />
             </div>
-            <button>Submit</button>
+            <button>Add New Entry To List</button>
         </form>
     );
 };
 
-export { LoginForm };
+export { TodoEntry };
