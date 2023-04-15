@@ -87,7 +87,9 @@ export async function getListEntriesByUserId(userId, completed) {
     'method': 'GET',
     // 'headers': {'Authorization': 'Bearer ' + authToken}
   })
-  return await result.json();
+  const res = await result.json();
+  return res.sort((a, b) => 
+  a.createdOn < b.createdOn ? 1 : (a.createdOn > b.createdOn ? -1 : 0));
 }
 
 export async function getListEntriesByCategory(category) {
