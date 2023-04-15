@@ -35,7 +35,7 @@ function app() {
   <div className="w-full h-auto bg-stone-900 border-4 border-slate-900">
     <h1 className="text-white font-bold text-6xl pl-16 pt-16"> Homework 2 by Andrew Amakye Ansah</h1>
     <h2 className="text-white font-normal text-2xl pl-16 pt-8"><Link href="todos">Access To Do List</Link></h2>
-    <h2 className="text-white font-normal text-2xl pl-16 pt-8"><Link href="testy">Testy Test Test Test</Link></h2>
+    {/* <h2 className="text-white font-normal text-2xl pl-16 pt-8"><Link href="testy">Testy Test Test Test</Link></h2> */}
     <h3 className="text-white font-normal text-lg pl-16 pt-4">View Completed Items</h3>
 
     <div className='ml-16'>    <SignIn />
